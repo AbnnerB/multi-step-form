@@ -6,8 +6,10 @@ const SideBarStyles = styled.section`
   background-image: url(${BgsideBar});
   background-size: cover;
   background-position: bottom center;
-  padding: 0 4.1rem 0 1.5rem;
+  padding-left: 1.5rem;
   border-radius: 8px;
+  width: 45%;
+  max-width: 230px;
 
   .containerInfoSideBarSteps {
     margin-top: 2rem;
