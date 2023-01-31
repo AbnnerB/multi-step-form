@@ -2,6 +2,7 @@ import styled from "styled-components";
 import FatherComponent from "./FatherComponent";
 
 const FormStyles = styled.form`
+  width: 80%;
   display: flex;
   flex-direction: column;
   gap: 2rem;

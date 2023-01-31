@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const FatherContainer = styled.section`
-  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -17,12 +17,13 @@ const FatherContainer = styled.section`
   }
 
   .content {
-    margin-top: 2rem;
+    margin-top: 2.5rem;
   }
 
   .barNavigation {
     display: flex;
     justify-content: space-between;
+    width: 80%;
   }
 
   .barNavigation button:first-of-type {

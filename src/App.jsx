@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 import SideBar from "./components/SideBar";
 import StepForm from "./components/StepForm";
+import StepYourPlan from "./components/StepYourPlan";
 
 const BackgroundContainer = styled.div`
   width: 100%;
@@ -30,7 +31,8 @@ function App() {
     <BackgroundContainer>
       <PrincipalContainer>
         <SideBar />
-        <StepForm />
+        {/* <StepForm /> */}
+        <StepYourPlan />
       </PrincipalContainer>
     </BackgroundContainer>
   );
