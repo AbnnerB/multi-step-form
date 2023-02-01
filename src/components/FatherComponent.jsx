@@ -26,7 +26,7 @@ const FatherContainer = styled.section`
   .barNavigation {
     display: flex;
     justify-content: space-between;
-    width: 80%;
+    min-width: 80%;
   }
 
   .barNavigation button:first-of-type {

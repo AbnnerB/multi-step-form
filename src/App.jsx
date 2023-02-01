@@ -30,12 +30,12 @@ const PrincipalContainer = styled.main`
 function App() {
   return (
     <BackgroundContainer>
-      <PrincipalContainer>
-        <StepProvider>
+      <StepProvider>
+        <PrincipalContainer>
           <SideBar />
           <ArraySteps />
-        </StepProvider>
-      </PrincipalContainer>
+        </PrincipalContainer>
+      </StepProvider>
     </BackgroundContainer>
   );
 }

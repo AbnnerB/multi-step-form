@@ -7,7 +7,7 @@ import ProImg from "../assets/icon-pro.svg";
 import { useState } from "react";
 
 const ContainerCards = styled.div`
-  width: 80%;
+  min-width: 80%;
   display: flex;
   justify-content: space-between;
 `;
@@ -34,7 +34,7 @@ const Card = styled.button`
 `;
 
 const AltPlan = styled.div`
-  width: 80%;
+  min-width: 80%;
   margin-top: 1.5rem;
   background-color: #acace43b;
   padding: 1rem 0;

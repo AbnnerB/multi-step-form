@@ -2,7 +2,7 @@ import styled from "styled-components";
 import FatherComponent from "./FatherComponent";
 
 const AllInfoAboutPlan = styled.div`
-  width: 80%;
+  min-width: 80%;
   display: flex;
   flex-direction: column;
 
