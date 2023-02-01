@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
+import StepProvider from "./context/StepProvider";
+
+import ArraySteps from "./components/ArraySteps";
 import SideBar from "./components/SideBar";
-import StepForm from "./components/StepForm";
-import StepYourPlan from "./components/StepYourPlan";
 
 const BackgroundContainer = styled.div`
   width: 100%;
@@ -30,9 +31,10 @@ function App() {
   return (
     <BackgroundContainer>
       <PrincipalContainer>
-        <SideBar />
-        {/* <StepForm /> */}
-        <StepYourPlan />
+        <StepProvider>
+          <SideBar />
+          <ArraySteps />
+        </StepProvider>
       </PrincipalContainer>
     </BackgroundContainer>
   );

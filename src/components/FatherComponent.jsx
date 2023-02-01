@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { StepContext } from "../context/StepContext";
+import useStepContext from "../hook/useStepContext";
 
 const FatherContainer = styled.section`
   width: 100%;
@@ -43,6 +45,18 @@ const FatherContainer = styled.section`
 `;
 
 export default function FatherComponent({ title, subTitle, children }) {
+  // useStepContext
+
+  const { value, setValue, contentInfoStepsArray } = useStepContext();
+
+  function nextStep() {
+    if (value >= contentInfoStepsArray.length - 1) {
+      return;
+    }
+    // setValue((preventStep) => preventStep + 1);
+    setValue(value + 1);
+  }
+
   return (
     <FatherContainer>
       <div>
@@ -55,7 +69,7 @@ export default function FatherComponent({ title, subTitle, children }) {
 
       <div className="barNavigation">
         <button>Go Back</button>
-        <button>Next Step</button>
+        <button onClick={nextStep}>Next Step</button>
       </div>
     </FatherContainer>
   );
