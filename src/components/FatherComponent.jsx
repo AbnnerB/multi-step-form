@@ -4,6 +4,7 @@ import useStepContext from "../hook/useStepContext";
 
 const FatherContainer = styled.section`
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -56,6 +57,13 @@ export default function FatherComponent({ title, subTitle, children }) {
     // setValue((preventStep) => preventStep + 1);
     setValue(value + 1);
   }
+  function goBack() {
+    if (value === 0) {
+      return;
+    }
+    // setValue((preventStep) => preventStep + 1);
+    setValue(value - 1);
+  }
 
   return (
     <FatherContainer>
@@ -68,7 +76,7 @@ export default function FatherComponent({ title, subTitle, children }) {
       </div>
 
       <div className="barNavigation">
-        <button>Go Back</button>
+        <button onClick={goBack}>Go Back</button>
         <button onClick={nextStep}>Next Step</button>
       </div>
     </FatherContainer>
