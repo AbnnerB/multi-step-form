@@ -30,11 +30,6 @@ const FormStyles = styled.form`
   }
 `;
 
-/*
-  title="Personal info"
-  subTitle="Please Provide your name, email adress, and phone number."
-*/
-
 export default function StepForm() {
   return (
     <>
@@ -46,15 +41,15 @@ export default function StepForm() {
       <FormStyles>
         <div className="formLabelAndInput">
           <label>Name</label>
-          <input placeholder="Aaaaaaa" type="text" />
+          <input placeholder="Aaaaaaa" type="text" required />
         </div>
         <div className="formLabelAndInput">
           <label>Email Address</label>
-          <input placeholder="aaaaaaaaaaa@gmail.com" type="email" />
+          <input placeholder="aaaaaaaaaaa@gmail.com" type="email" required />
         </div>
         <div className="formLabelAndInput">
           <label>Phone Number</label>
-          <input placeholder="+55 (99) 99999-9999" type="tel" />
+          <input placeholder="+55 (99) 99999-9999" type="tel" required />
         </div>
       </FormStyles>
     </>

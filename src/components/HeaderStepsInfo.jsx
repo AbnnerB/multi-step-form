@@ -5,7 +5,7 @@ const HeaderInfoSteps = styled.div`
     color: #0d0c53;
   }
   h4 {
-    margin-top: 0.7rem;
+    margin: 0.7rem 0 1.5rem 0;
     color: gray;
     font-weight: 400;
   }

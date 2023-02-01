@@ -2,7 +2,6 @@ import styled from "styled-components";
 import HeaderStepsInfo from "./HeaderStepsInfo";
 
 const AllInfoAboutPlan = styled.div`
-  min-width: 80%;
   display: flex;
   flex-direction: column;
 

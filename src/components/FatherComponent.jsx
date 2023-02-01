@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import styled from "styled-components";
 import useStepContext from "../hook/useStepContext";
 
@@ -9,14 +10,15 @@ const FatherContainer = styled.section`
   justify-content: space-between;
   padding: 2rem 0 1rem 0;
 
-  /* .content {
-    margin-top: 2.5rem;
-  } */
+  .content {
+    width: 90%;
+    height: 100%;
+  }
 
   .barNavigation {
     display: flex;
     justify-content: space-between;
-    min-width: 80%;
+    width: 90%;
   }
 
   .barNavigation button:first-of-type {
@@ -58,10 +60,19 @@ export default function FatherComponent() {
     <FatherContainer>
       <div className="content">{contentInfoStepsArray[value]}</div>
 
-      <div className="barNavigation">
-        <button onClick={goBack}>Go Back</button>
-        <button onClick={nextStep}>Next Step</button>
-      </div>
+      {value !== contentInfoStepsArray.length - 1 && (
+        <div className="barNavigation">
+          <button
+            style={{ visibility: value === 0 ? "hidden" : "visible" }}
+            onClick={goBack}
+          >
+            Go Back
+          </button>
+          <button onClick={nextStep}>
+            {value !== 3 ? "Next Step" : "Confirm"}
+          </button>
+        </div>
+      )}
     </FatherContainer>
   );
 }

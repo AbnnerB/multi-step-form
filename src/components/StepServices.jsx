@@ -37,7 +37,6 @@ export default function StepServices() {
 }
 
 const ContainerService = styled.button`
-  width: 80%;
   background-color: transparent;
   border: 1px solid #b0aaff;
   border-radius: 8px;
@@ -45,6 +44,7 @@ const ContainerService = styled.button`
   justify-content: space-between;
   align-items: center;
   gap: 2rem;
+  cursor: auto;
   padding: 1rem;
 
   .serviceCheckAndInfo {
@@ -65,6 +65,9 @@ const ContainerService = styled.button`
   span {
     color: #9691e2;
     font-weight: bold;
+  }
+  input {
+    cursor: pointer;
   }
 `;
 
