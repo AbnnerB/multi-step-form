@@ -107,7 +107,7 @@ export default function StepYourPlan() {
       />
 
       <ContainerCards>
-        <Cards urlImage={ArcadeImg} tit="Arcade" subTit="$/mo" />
+        <Cards urlImage={ArcadeImg} tit="Arcade" subTit="$8/mo" />
         <Cards urlImage={AdvancedImg} tit="Advanced" subTit="$12/mo" />
         <Cards urlImage={ProImg} tit="Pro" subTit="$15/mo" />
       </ContainerCards>
