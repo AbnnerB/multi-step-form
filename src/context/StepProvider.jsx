@@ -4,7 +4,7 @@ import { StepContext } from "./StepContext";
 import StepFinish from "../components/StepFinish";
 import StepForm from "../components/StepForm";
 import StepYourPlan from "../components/StepYourPlan";
-import StepServices from "../StepServices";
+import StepServices from "../components/StepServices";
 
 export default function StepProvider({ children }) {
   const [value, setValue] = useState(0);

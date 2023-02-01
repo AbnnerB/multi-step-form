@@ -1,10 +1,11 @@
+import { useState } from "react";
 import styled from "styled-components";
-import FatherComponent from "./FatherComponent";
 
 import ArcadeImg from "../assets/icon-arcade.svg";
 import AdvancedImg from "../assets/icon-advanced.svg";
 import ProImg from "../assets/icon-pro.svg";
-import { useState } from "react";
+
+import HeaderStepsInfo from "./HeaderStepsInfo";
 
 const ContainerCards = styled.div`
   min-width: 80%;
@@ -99,10 +100,12 @@ export default function StepYourPlan() {
   const [altStateMonthYear, setAltStateMonthYear] = useState(true);
 
   return (
-    <FatherComponent
-      title="Select your plan"
-      subTitle="You have the option of montlhy or yearly billing."
-    >
+    <>
+      <HeaderStepsInfo
+        title="Select your plan"
+        subTitle="You have the option of montlhy or yearly billing."
+      />
+
       <ContainerCards>
         <Cards urlImage={ArcadeImg} tit="Arcade" subTit="$/mo" />
         <Cards urlImage={AdvancedImg} tit="Advanced" subTit="$12/mo" />
@@ -123,7 +126,7 @@ export default function StepYourPlan() {
           </h3>
         </div>
       </AltPlan>
-    </FatherComponent>
+    </>
   );
 }
 

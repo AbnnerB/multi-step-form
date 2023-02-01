@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import FatherComponent from "./FatherComponent";
+import HeaderStepsInfo from "./HeaderStepsInfo";
 
 const AllInfoAboutPlan = styled.div`
   min-width: 80%;
@@ -47,10 +47,12 @@ const AllInfoAboutPlan = styled.div`
 
 export default function StepFinish() {
   return (
-    <FatherComponent
-      title="Finishing up"
-      subTitle="Double-check everything look OK before confirming."
-    >
+    <>
+      <HeaderStepsInfo
+        title="Finishing up"
+        subTitle="Double-check everything look OK before confirming."
+      />
+
       <AllInfoAboutPlan>
         <div className="info">
           <div className="customArcade infoFlex">
@@ -76,6 +78,6 @@ export default function StepFinish() {
           <span>+$12/mo</span>
         </div>
       </AllInfoAboutPlan>
-    </FatherComponent>
+    </>
   );
 }

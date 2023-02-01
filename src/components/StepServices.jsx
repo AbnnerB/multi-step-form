@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import FatherComponent from "./components/FatherComponent";
+import HeaderStepsInfo from "./HeaderStepsInfo";
 
 const ContainerAllServices = styled.div`
   display: flex;
@@ -9,10 +9,12 @@ const ContainerAllServices = styled.div`
 
 export default function StepServices() {
   return (
-    <FatherComponent
-      title="Pick add-ons"
-      subTitle="Add ons help your gaming experience"
-    >
+    <>
+      <HeaderStepsInfo
+        title="Pick add-ons"
+        subTitle="Add ons help your gaming experience"
+      />
+
       <ContainerAllServices>
         <Service
           titService="Online service"
@@ -30,7 +32,7 @@ export default function StepServices() {
           valueService="+$2/mo"
         />
       </ContainerAllServices>
-    </FatherComponent>
+    </>
   );
 }
 

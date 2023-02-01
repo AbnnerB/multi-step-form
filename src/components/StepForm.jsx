@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import FatherComponent from "./FatherComponent";
+import HeaderStepsInfo from "./HeaderStepsInfo";
 
 const FormStyles = styled.form`
   min-width: 80%;
@@ -30,12 +30,19 @@ const FormStyles = styled.form`
   }
 `;
 
+/*
+  title="Personal info"
+  subTitle="Please Provide your name, email adress, and phone number."
+*/
+
 export default function StepForm() {
   return (
-    <FatherComponent
-      title="Personal info"
-      subTitle="Please Provide your name, email adress, and phone number."
-    >
+    <>
+      <HeaderStepsInfo
+        title="Personal info"
+        subTitle="Please Provide your name, email adress, and phone number."
+      />
+
       <FormStyles>
         <div className="formLabelAndInput">
           <label>Name</label>
@@ -50,6 +57,6 @@ export default function StepForm() {
           <input placeholder="+55 (99) 99999-9999" type="tel" />
         </div>
       </FormStyles>
-    </FatherComponent>
+    </>
   );
 }

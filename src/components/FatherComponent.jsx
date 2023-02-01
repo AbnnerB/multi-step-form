@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { StepContext } from "../context/StepContext";
 import useStepContext from "../hook/useStepContext";
 
 const FatherContainer = styled.section`
@@ -10,18 +9,9 @@ const FatherContainer = styled.section`
   justify-content: space-between;
   padding: 2rem 0 1rem 0;
 
-  .topo h2 {
-    color: #0d0c53;
-  }
-  .topo h4 {
-    margin-top: 0.7rem;
-    color: gray;
-    font-weight: 400;
-  }
-
-  .content {
+  /* .content {
     margin-top: 2.5rem;
-  }
+  } */
 
   .barNavigation {
     display: flex;
@@ -45,9 +35,7 @@ const FatherContainer = styled.section`
   }
 `;
 
-export default function FatherComponent({ title, subTitle, children }) {
-  // useStepContext
-
+export default function FatherComponent() {
   const { value, setValue, contentInfoStepsArray } = useStepContext();
 
   function nextStep() {
@@ -57,6 +45,7 @@ export default function FatherComponent({ title, subTitle, children }) {
     // setValue((preventStep) => preventStep + 1);
     setValue(value + 1);
   }
+
   function goBack() {
     if (value === 0) {
       return;
@@ -67,13 +56,7 @@ export default function FatherComponent({ title, subTitle, children }) {
 
   return (
     <FatherContainer>
-      <div>
-        <div className="topo">
-          <h2>{title}</h2>
-          <h4>{subTitle}</h4>
-        </div>
-        <div className="content">{children}</div>
-      </div>
+      <div className="content">{contentInfoStepsArray[value]}</div>
 
       <div className="barNavigation">
         <button onClick={goBack}>Go Back</button>
