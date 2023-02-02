@@ -38,7 +38,28 @@ const FatherContainer = styled.section`
 `;
 
 export default function FatherComponent() {
-  const { value, setValue, contentInfoStepsArray } = useStepContext();
+  const {
+    value,
+    setValue,
+    contentInfoStepsArray,
+    nameForm,
+    emailForm,
+    phoneForm,
+    setMessage,
+    setControlSendForm,
+  } = useStepContext();
+
+  function nextStepForm() {
+    if (
+      nameForm.length === 0 ||
+      emailForm.length === 0 ||
+      phoneForm.length === 0
+    ) {
+      return setControlSendForm(true);
+    }
+
+    setValue(value + 1);
+  }
 
   function nextStep() {
     if (value >= contentInfoStepsArray.length - 1) {
@@ -68,9 +89,15 @@ export default function FatherComponent() {
           >
             Go Back
           </button>
-          <button onClick={nextStep}>
-            {value !== 3 ? "Next Step" : "Confirm"}
-          </button>
+          {value === 0 ? (
+            <button type="submit" onClick={nextStepForm}>
+              Next Step
+            </button>
+          ) : (
+            <button onClick={nextStep}>
+              {value !== 3 ? "Next Step" : "Confirm"}
+            </button>
+          )}
         </div>
       )}
     </FatherContainer>

@@ -85,7 +85,7 @@ export default function SideBar() {
           </div>
         </div>
         <div className="sideBarInfoSteps">
-          <span className={value === 3 ? "backgroundFill" : ""}>4</span>
+          <span className={value >= 3 ? "backgroundFill" : ""}>4</span>
           <div>
             <h4>STEP 4</h4>
             <h3>SUMMARY</h3>
