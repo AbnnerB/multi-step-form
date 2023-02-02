@@ -101,27 +101,23 @@ export default function StepForm() {
     handleSubmit,
     watch,
     formState: { errors },
-    control,
   } = useForm({
     resolver: yupResolver(schema),
   });
 
+  const [lastCharacterPhoneNumber, setLastCharacterPhoneNumber] = useState("");
+
   function submit(userData) {
-    console.log(userData);
-    console.log(userData.phoneForm);
+    const lastCharacterInStringPhoneForm = userData.phoneForm.slice(-1);
 
-    let UserDataStringPhone = JSON.stringify(userData.phoneForm);
-    let lastCharacterInStringPhoneForm = UserDataStringPhone.lastIndexOf(_);
-
-    console.log(UserDataStringPhone);
-    console.log(lastCharacterInStringPhoneForm);
-
-    if (userData.phoneForm.length < 15) {
-      console.log("errrou");
+    if (lastCharacterInStringPhoneForm === "_") {
+      setLastCharacterPhoneNumber(lastCharacterInStringPhoneForm);
       return;
+    } else {
+      setLastCharacterPhoneNumber(" ");
     }
 
-    // setValue(value + 1);
+    setValue(value + 1);
   }
   // console.log(errors);
 
@@ -163,9 +159,11 @@ export default function StepForm() {
         <div className="formLabelAndInput">
           <div className="labelAndMessage">
             <label htmlFor="pHoneNumber">Phone Number</label>
-            <span style={{ color: "red" }}>{errors.phoneForm?.message}</span>
+            {/* <span style={{ color: "red" }}>{errors.phoneForm?.message}</span> */}
+            {lastCharacterPhoneNumber === "_" && (
+              <span style={{ color: "red" }}>Fill in all the field</span>
+            )}
           </div>
-
           <InputMask
             mask="(99) 99999-9999"
             placeholder=" (99) 99999-9999"
