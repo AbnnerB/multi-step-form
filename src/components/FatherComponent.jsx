@@ -49,18 +49,6 @@ export default function FatherComponent() {
     setControlSendForm,
   } = useStepContext();
 
-  function nextStepForm() {
-    if (
-      nameForm.length === 0 ||
-      emailForm.length === 0 ||
-      phoneForm.length === 0
-    ) {
-      return setControlSendForm(true);
-    }
-
-    setValue(value + 1);
-  }
-
   function nextStep() {
     if (value >= contentInfoStepsArray.length - 1) {
       return;
@@ -83,20 +71,19 @@ export default function FatherComponent() {
 
       {value !== contentInfoStepsArray.length - 1 && (
         <div className="barNavigation">
-          <button
-            style={{ visibility: value === 0 ? "hidden" : "visible" }}
-            onClick={goBack}
-          >
-            Go Back
-          </button>
-          {value === 0 ? (
-            <button type="submit" onClick={nextStepForm}>
-              Next Step
-            </button>
-          ) : (
-            <button onClick={nextStep}>
-              {value !== 3 ? "Next Step" : "Confirm"}
-            </button>
+          {value !== 0 && (
+            <>
+              <button
+                style={{ visibility: value === 0 ? "hidden" : "visible" }}
+                onClick={goBack}
+              >
+                Go Back
+              </button>
+
+              <button onClick={nextStep}>
+                {value !== 3 ? "Next Step" : "Confirm"}
+              </button>
+            </>
           )}
         </div>
       )}

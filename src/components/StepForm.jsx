@@ -3,6 +3,10 @@ import styled from "styled-components";
 import useStepContext from "../hook/useStepContext";
 import HeaderStepsInfo from "./HeaderStepsInfo";
 
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
 const FormStyles = styled.form`
   min-width: 80%;
   display: flex;
@@ -46,7 +50,37 @@ const FormStyles = styled.form`
   .formLabelAndInputRed input {
     border-color: red;
   }
+
+  .buttonNexStepFake {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+  }
+  .buttonNexStepFake button {
+    position: absolute;
+    bottom: -87px;
+    right: 0px;
+    background-color: #201f55;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    padding: 0.8rem 1rem;
+  }
 `;
+
+const schema = yup
+  .object({
+    nameForm: yup.string().required("This field is required"),
+    emailForm: yup
+      .string()
+      .email("Enter a valid email address")
+      .required("This field is required"),
+    phoneForm: yup
+      .string("this is not a valid number")
+      .required("This field is required"),
+    // age: yup.number().positive().integer().required(),
+  })
+  .required();
 
 export default function StepForm() {
   const {
@@ -56,15 +90,24 @@ export default function StepForm() {
     setEmailForm,
     phoneForm,
     setPhoneForm,
-    message,
-    controlSendForm,
+    value,
+    setValue,
   } = useStepContext();
 
-  const [inputIsEmpty, setInputIsEmpty] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
-  // if (nameForm.length === 0) {
-  //   setMessage("Preencha o campo");
-  // }
+  function submit(userData) {
+    console.log(userData);
+    // setValue(value + 1);
+  }
+  console.log(errors);
 
   return (
     <>
@@ -73,66 +116,65 @@ export default function StepForm() {
         subTitle="Please Provide your name, email adress, and phone number."
       />
 
-      <FormStyles>
-        <div
-          className={
-            nameForm.length === 0 && controlSendForm
-              ? "formLabelAndInputRed"
-              : "formLabelAndInput"
-          }
-        >
+      <FormStyles onSubmit={handleSubmit(submit)}>
+        <div className="formLabelAndInput">
           <div className="labelAndMessage">
-            <label>Name</label>
-            {nameForm.length === 0 && controlSendForm && <span>{message}</span>}
+            <label for="naMeForm">Name</label>
+            <span style={{ color: "red" }}>{errors.nameForm?.message}</span>
           </div>
           <input
             placeholder="Your Name"
             type="text"
-            value={nameForm}
-            onChange={(e) => setNameForm(e.target.value)}
+            {...register("nameForm", { required: true })}
+            maxLength="30"
+            id="naMeForm"
           />
         </div>
-        <div
-          className={
-            emailForm.length === 0 && controlSendForm
-              ? "formLabelAndInputRed"
-              : "formLabelAndInput"
-          }
-        >
+        <div className="formLabelAndInput">
           <div className="labelAndMessage">
-            <label>Email Address</label>
-            {emailForm.length === 0 && controlSendForm && (
-              <span>{message}</span>
-            )}
+            <label for="eMailForm">Email Address</label>
+            <span style={{ color: "red" }}>{errors.emailForm?.message}</span>
           </div>
           <input
             placeholder="yourName@gmail.com"
-            type="email"
-            value={emailForm}
-            onChange={(e) => setEmailForm(e.target.value)}
+            type="text"
+            {...register("emailForm", { required: true })}
+            id="eMailForm"
           />
         </div>
-        <div
-          className={
-            phoneForm.length === 0 && controlSendForm
-              ? "formLabelAndInputRed"
-              : "formLabelAndInput"
-          }
-        >
+
+        <div className="formLabelAndInput">
           <div className="labelAndMessage">
-            <label>Phone Number</label>
-            {phoneForm.length === 0 && controlSendForm && (
-              <span>{message}</span>
-            )}
+            <label for="pHoneNumber">Phone Number</label>
+            <span style={{ color: "red" }}>{errors.phoneForm?.message}</span>
           </div>
           <input
             placeholder="+55 (99) 99999-9999"
             type="tel"
-            value={phoneForm}
-            // pattern="[0-9]{2}[' '][0-9]{2}[' '][0-9]{5}-[0-9]{4} "
-            onChange={(e) => setPhoneForm(e.target.value)}
-            required
+            {...register("phoneForm", { required: true })}
+            mask="99.99999-9999"
+            maxLength="19"
+            id="pHoneNumber"
           />
+          {/* <input
+            type="tel"
+            placeholder="Mobile number"
+            {...register("Mobile number", {
+              required: true,
+              minLength: 6,
+              maxLength: 12,
+            })}
+          /> */}
+
+          <input
+            type="text"
+            class="form-control phone-mask"
+            placeholder="Ex.: 0000-0000"
+          ></input>
+        </div>
+
+        <div className="buttonNexStepFake">
+          <button type="submit">Next Step</button>
         </div>
       </FormStyles>
     </>
