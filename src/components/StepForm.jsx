@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import useStepContext from "../hook/useStepContext";
 import HeaderStepsInfo from "./HeaderStepsInfo";
@@ -77,10 +77,7 @@ const schema = yup
       .string()
       .email("Enter a valid email address")
       .required("This field is required"),
-    phoneForm: yup
-      .string("this is not a valid number")
-      .required("This field is required"),
-    // age: yup.number().positive().integer().required(),
+    phoneForm: yup.string().required("This field is required"),
   })
   .required();
 
@@ -105,21 +102,21 @@ export default function StepForm() {
     resolver: yupResolver(schema),
   });
 
-  const [lastCharacterPhoneNumber, setLastCharacterPhoneNumber] = useState("");
+  const [lastCharacterPhoneNumber, setLastCharacterPhoneNumber] = useState("_");
+  const getPhoneForm = watch("phoneForm") || "";
 
-  function submit(userData) {
-    const lastCharacterInStringPhoneForm = userData.phoneForm.slice(-1);
+  useEffect(() => {
+    const lastCharacterInStringPhoneForm = getPhoneForm.slice(-1);
+    setLastCharacterPhoneNumber(lastCharacterInStringPhoneForm);
+  }, [getPhoneForm]);
 
-    if (lastCharacterInStringPhoneForm === "_") {
-      setLastCharacterPhoneNumber(lastCharacterInStringPhoneForm);
+  function submit() {
+    if (lastCharacterPhoneNumber === "_") {
       return;
-    } else {
-      setLastCharacterPhoneNumber(" ");
     }
 
     setValue(value + 1);
   }
-  // console.log(errors);
 
   return (
     <>
@@ -159,7 +156,8 @@ export default function StepForm() {
         <div className="formLabelAndInput">
           <div className="labelAndMessage">
             <label htmlFor="pHoneNumber">Phone Number</label>
-            {/* <span style={{ color: "red" }}>{errors.phoneForm?.message}</span> */}
+
+            <span style={{ color: "red" }}>{errors.phoneForm?.message}</span>
             {lastCharacterPhoneNumber === "_" && (
               <span style={{ color: "red" }}>Fill in all the field</span>
             )}
