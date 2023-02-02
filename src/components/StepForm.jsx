@@ -156,9 +156,8 @@ export default function StepForm() {
           <InputMask
             mask="(99) 99999-9999"
             placeholder=" (99) 99999-9999"
-            // {...register("phoneForm", { required: true })}
-            // minLength="14"
-            // id="pHoneNumber"
+            {...register("phoneForm", { required: true })}
+            id="pHoneNumber"
           />
         </div>
 
