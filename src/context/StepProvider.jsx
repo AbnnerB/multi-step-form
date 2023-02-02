@@ -2,9 +2,9 @@ import { useState } from "react";
 import { StepContext } from "./StepContext";
 
 import StepFinish from "../components/StepFinish";
-import StepForm from "../components/StepForm";
-import StepYourPlan from "../components/StepYourPlan";
-import StepServices from "../components/StepServices";
+import StepForm from "../components/StepsForm/StepForm";
+import StepYourPlan from "../components/StepsPlan/StepYourPlan";
+import StepServices from "../components/StepsServices/StepServices";
 import StepThanks from "../components/StepThanks";
 
 export default function StepProvider({ children }) {
