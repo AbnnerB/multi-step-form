@@ -108,9 +108,22 @@ export default function StepForm() {
 
   function submit(userData) {
     console.log(userData);
+    console.log(userData.phoneForm);
+
+    let UserDataStringPhone = JSON.stringify(userData.phoneForm);
+    let lastCharacterInStringPhoneForm = UserDataStringPhone.lastIndexOf(_);
+
+    console.log(UserDataStringPhone);
+    console.log(lastCharacterInStringPhoneForm);
+
+    if (userData.phoneForm.length < 15) {
+      console.log("errrou");
+      return;
+    }
+
     // setValue(value + 1);
   }
-  console.log(errors);
+  // console.log(errors);
 
   return (
     <>
