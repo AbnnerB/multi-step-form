@@ -69,7 +69,7 @@ export default function StepForm() {
   return (
     <>
       <HeaderStepsInfo
-        title="Personal info"
+        title="Personal infos"
         subTitle="Please Provide your name, email adress, and phone number."
       />
 
