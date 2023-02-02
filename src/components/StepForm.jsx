@@ -7,6 +7,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
+import InputMask from "react-input-mask";
+
 const FormStyles = styled.form`
   min-width: 80%;
   display: flex;
@@ -99,6 +101,7 @@ export default function StepForm() {
     handleSubmit,
     watch,
     formState: { errors },
+    control,
   } = useForm({
     resolver: yupResolver(schema),
   });
@@ -119,7 +122,7 @@ export default function StepForm() {
       <FormStyles onSubmit={handleSubmit(submit)}>
         <div className="formLabelAndInput">
           <div className="labelAndMessage">
-            <label for="naMeForm">Name</label>
+            <label htmlFor="naMeForm">Name</label>
             <span style={{ color: "red" }}>{errors.nameForm?.message}</span>
           </div>
           <input
@@ -130,9 +133,10 @@ export default function StepForm() {
             id="naMeForm"
           />
         </div>
+
         <div className="formLabelAndInput">
           <div className="labelAndMessage">
-            <label for="eMailForm">Email Address</label>
+            <label htmlFor="eMailForm">Email Address</label>
             <span style={{ color: "red" }}>{errors.emailForm?.message}</span>
           </div>
           <input
@@ -145,32 +149,17 @@ export default function StepForm() {
 
         <div className="formLabelAndInput">
           <div className="labelAndMessage">
-            <label for="pHoneNumber">Phone Number</label>
+            <label htmlFor="pHoneNumber">Phone Number</label>
             <span style={{ color: "red" }}>{errors.phoneForm?.message}</span>
           </div>
-          <input
-            placeholder="+55 (99) 99999-9999"
-            type="tel"
-            {...register("phoneForm", { required: true })}
-            mask="99.99999-9999"
-            maxLength="19"
-            id="pHoneNumber"
-          />
-          {/* <input
-            type="tel"
-            placeholder="Mobile number"
-            {...register("Mobile number", {
-              required: true,
-              minLength: 6,
-              maxLength: 12,
-            })}
-          /> */}
 
-          <input
-            type="text"
-            class="form-control phone-mask"
-            placeholder="Ex.: 0000-0000"
-          ></input>
+          <InputMask
+            mask="(99) 99999-9999"
+            placeholder=" (99) 99999-9999"
+            // {...register("phoneForm", { required: true })}
+            // minLength="14"
+            // id="pHoneNumber"
+          />
         </div>
 
         <div className="buttonNexStepFake">
