@@ -14,8 +14,6 @@ export default function StepProvider({ children }) {
   const [emailForm, setEmailForm] = useState("");
   const [phoneForm, setPhoneForm] = useState("");
 
-  const [message, setMessage] = useState("This field is required");
-
   const [controlSendForm, setControlSendForm] = useState(false);
 
   const contentInfoStepsArray = [
@@ -25,6 +23,12 @@ export default function StepProvider({ children }) {
     <StepFinish />,
     <StepThanks />,
   ];
+
+  const [yourPlanSelect, setYourPlanSelect] = useState({
+    planType: "arcade",
+    planValue: "$9/mo",
+    planTime: "month",
+  });
 
   return (
     <StepContext.Provider
@@ -38,10 +42,10 @@ export default function StepProvider({ children }) {
         setEmailForm,
         phoneForm,
         setPhoneForm,
-        message,
-        setMessage,
         controlSendForm,
         setControlSendForm,
+        yourPlanSelect,
+        setYourPlanSelect,
       }}
     >
       {children}
