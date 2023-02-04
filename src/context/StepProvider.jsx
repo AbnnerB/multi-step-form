@@ -25,9 +25,9 @@ export default function StepProvider({ children }) {
   ];
 
   const [yourPlanSelect, setYourPlanSelect] = useState({
-    planType: "arcade",
+    planType: "Arcade",
     planValue: "$9/mo",
-    planTime: "month",
+    planTime: "Monthly",
   });
 
   return (

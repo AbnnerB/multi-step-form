@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import useStepContext from "../hook/useStepContext";
 import HeaderStepsInfo from "./HeaderStepsInfo";
 
 const AllInfoAboutPlan = styled.div`
@@ -45,6 +46,8 @@ const AllInfoAboutPlan = styled.div`
 `;
 
 export default function StepFinish() {
+  const { yourPlanSelect } = useStepContext();
+
   return (
     <>
       <HeaderStepsInfo
@@ -56,10 +59,12 @@ export default function StepFinish() {
         <div className="info">
           <div className="customArcade infoFlex">
             <div>
-              <h3>Arcade (Monthly)</h3>
+              <h3>
+                {yourPlanSelect.planType} ({yourPlanSelect.planTime})
+              </h3>
               <h4>Change</h4>
             </div>
-            <span>$9/mo</span>
+            <span>{yourPlanSelect.planValue}</span>
           </div>
 
           <div className="customOnlineService infoFlex">

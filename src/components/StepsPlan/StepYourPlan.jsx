@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import ArcadeImg from "../../assets/icon-arcade.svg";
 import AdvancedImg from "../../assets/icon-advanced.svg";
@@ -16,33 +16,9 @@ import {
 } from "./StepPlanStyles";
 
 export default function StepYourPlan() {
-  const { yourPlanSelect, setYourPlanSelect } = useStepContext();
-  const [altStateMonthYear, setAltStateMonthYear] = useState(true);
+  const { yourPlanSelect } = useStepContext();
 
-  function arcade() {
-    setYourPlanSelect({
-      planType: "Arcade",
-      planValue: altStateMonthYear ? "$9/mo" : "$90/mo",
-      planTime: "month",
-    });
-    console.log(yourPlanSelect.planType);
-  }
-  function advanced() {
-    setYourPlanSelect({
-      planType: "Advanced",
-      planValue: altStateMonthYear ? "$12/mo" : "$120/mo",
-      planTime: "month",
-    });
-    console.log(yourPlanSelect.planType);
-  }
-  function pro() {
-    setYourPlanSelect({
-      planType: "Pro",
-      planValue: altStateMonthYear ? "$15/mo" : "$150/mo",
-      planTime: "month",
-    });
-    console.log(yourPlanSelect.planType);
-  }
+  const [altStateMonthYear, setAltStateMonthYear] = useState(true);
 
   return (
     <>
@@ -53,27 +29,28 @@ export default function StepYourPlan() {
 
       <ContainerCards>
         <Cards
-          onclickk={arcade}
           altStateMonthYear={altStateMonthYear}
           urlImage={ArcadeImg}
           tit="Arcade"
-          subTit={altStateMonthYear ? "$9/mo" : "$90/mo"}
+          nameType={yourPlanSelect.planType}
+          subTit={altStateMonthYear ? "$9/mo" : "$90/yr"}
         />
         <Cards
-          onclickk={advanced}
           altStateMonthYear={altStateMonthYear}
           urlImage={AdvancedImg}
           tit="Advanced"
-          subTit={altStateMonthYear ? "$12/mo" : "$120/mo"}
+          nameType={yourPlanSelect.planType}
+          subTit={altStateMonthYear ? "$12/mo" : "$120/yr"}
         />
         <Cards
-          onclickk={pro}
           altStateMonthYear={altStateMonthYear}
           urlImage={ProImg}
           tit="Pro"
-          subTit={altStateMonthYear ? "$15/mo" : "$150/mo"}
+          nameType={yourPlanSelect.planType}
+          subTit={altStateMonthYear ? "$15/mo" : "$150/yr"}
         />
       </ContainerCards>
+
       <AltPlan>
         <div>
           <h3 style={{ color: altStateMonthYear ? "#0d0c53" : "gray" }}>
@@ -89,14 +66,51 @@ export default function StepYourPlan() {
           </h3>
         </div>
       </AltPlan>
-      {`${yourPlanSelect.planType} e  ${yourPlanSelect.planValue} e  ${yourPlanSelect.planTime}`}
     </>
   );
 }
 
-function Cards({ urlImage, tit, subTit, altStateMonthYear, onclickk }) {
+function Cards({ urlImage, tit, subTit, altStateMonthYear, nameType }) {
+  const { yourPlanSelect, setYourPlanSelect } = useStepContext();
+
+  useEffect(() => {
+    if (yourPlanSelect.planType === "Arcade") {
+      setYourPlanSelect({
+        planType: "Arcade",
+        planValue: altStateMonthYear ? "$9/mo" : "$90/yr",
+        planTime: altStateMonthYear ? "Monthly" : "Yearly",
+      });
+    } else if (yourPlanSelect.planType === "Advanced") {
+      setYourPlanSelect({
+        planType: "Advanced",
+        planValue: altStateMonthYear ? "$12/mo" : "$120/yr",
+        planTime: altStateMonthYear ? "Monthly" : "Yearly",
+      });
+    } else if (yourPlanSelect.planType === "Pro") {
+      setYourPlanSelect({
+        planType: tit,
+        planValue: altStateMonthYear ? "$15/mo" : "$150/yr",
+        planTime: altStateMonthYear ? "Monthly" : "Yearly",
+      });
+    }
+  }, [altStateMonthYear]);
+
+  function changePlanValue() {
+    setYourPlanSelect({
+      planType: tit,
+      planValue: subTit,
+      planTime: altStateMonthYear ? "Monthly" : "Yearly",
+    });
+  }
+
   return (
-    <Card onClick={onclickk}>
+    <Card
+      style={{
+        backgroundColor: tit === nameType ? "#c4cae422" : "white",
+        borderColor: tit === nameType ? "#6843ad" : "",
+      }}
+      onClick={changePlanValue}
+    >
       <img src={urlImage} alt="Logo" />
       <div className="infoCard">
         <h3>{tit}</h3>
