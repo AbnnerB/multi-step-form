@@ -46,7 +46,7 @@ const AllInfoAboutPlan = styled.div`
 `;
 
 export default function StepFinish() {
-  const { yourPlanSelect } = useStepContext();
+  const { yourPlanSelect, arrayValuesServices } = useStepContext();
 
   return (
     <>
@@ -67,15 +67,17 @@ export default function StepFinish() {
             <span>{yourPlanSelect.planValue}</span>
           </div>
 
-          <div className="customOnlineService infoFlex">
-            <h4>Online service</h4>
-            <span>+$1/mo</span>
-          </div>
+          {arrayValuesServices.map((item, index) => (
+            <div key={index} className="customOnlineService infoFlex">
+              <h4>{item.nameService}</h4>
+              <span>{item.priceService}</span>
+            </div>
+          ))}
 
-          <div className="customStorage infoFlex">
+          {/* <div className="customStorage infoFlex">
             <h4>Larger storage</h4>
             <span>+$2/mo</span>
-          </div>
+          </div> */}
         </div>
         <div className="total infoFlex">
           <h4>Total(per Month)</h4>
