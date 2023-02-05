@@ -30,6 +30,8 @@ export default function StepProvider({ children }) {
     planTime: "Monthly",
   });
 
+  const [arrayValuesServices, setArrayValuesServices] = useState([]);
+
   return (
     <StepContext.Provider
       value={{
@@ -46,6 +48,8 @@ export default function StepProvider({ children }) {
         setControlSendForm,
         yourPlanSelect,
         setYourPlanSelect,
+        arrayValuesServices,
+        setArrayValuesServices,
       }}
     >
       {children}

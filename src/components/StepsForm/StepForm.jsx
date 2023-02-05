@@ -41,10 +41,12 @@ export default function StepForm() {
     setLastCharacterPhoneNumber(lastCharacterInStringPhoneForm);
   }, [getPhoneForm]);
 
-  function submit() {
+  function submit(userData) {
     if (lastCharacterPhoneNumber === "_") {
       return;
     }
+
+    console.log(userData);
 
     setValue(value + 1);
   }
