@@ -22,7 +22,7 @@ const schema = yup
   .required();
 
 export default function StepForm() {
-  const { value, setValue } = useStepContext();
+  const { valueCurrentStep, setValueCurrentStep } = useStepContext();
 
   const {
     register,
@@ -46,7 +46,7 @@ export default function StepForm() {
       return;
     }
 
-    setValue(value + 1);
+    setValueCurrentStep(valueCurrentStep + 1);
   }
 
   return (

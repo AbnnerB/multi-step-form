@@ -8,11 +8,7 @@ import StepFinish from "../components/StepFinish";
 import StepThanks from "../components/StepThanks";
 
 export default function StepProvider({ children }) {
-  const [value, setValue] = useState(0);
-
-  const [nameForm, setNameForm] = useState("");
-  const [emailForm, setEmailForm] = useState("");
-  const [phoneForm, setPhoneForm] = useState("");
+  const [valueCurrentStep, setValueCurrentStep] = useState(0);
 
   const [controlSendForm, setControlSendForm] = useState(false);
 
@@ -36,15 +32,9 @@ export default function StepProvider({ children }) {
   return (
     <StepContext.Provider
       value={{
-        value,
-        setValue,
+        valueCurrentStep,
+        setValueCurrentStep,
         contentInfoStepsArray,
-        nameForm,
-        setNameForm,
-        emailForm,
-        setEmailForm,
-        phoneForm,
-        setPhoneForm,
         controlSendForm,
         setControlSendForm,
         altStateMonthYear,

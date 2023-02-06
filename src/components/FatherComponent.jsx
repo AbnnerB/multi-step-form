@@ -38,50 +38,36 @@ const FatherContainer = styled.section`
 `;
 
 export default function FatherComponent() {
-  const {
-    value,
-    setValue,
-    contentInfoStepsArray,
-    nameForm,
-    emailForm,
-    phoneForm,
-    setMessage,
-    setControlSendForm,
-  } = useStepContext();
+  const { valueCurrentStep, setValueCurrentStep, contentInfoStepsArray } =
+    useStepContext();
 
   function nextStep() {
-    if (value >= contentInfoStepsArray.length - 1) {
-      return;
-    }
-    // setValue((preventStep) => preventStep + 1);
-    setValue(value + 1);
+    setValueCurrentStep(valueCurrentStep + 1);
   }
 
   function goBack() {
-    if (value === 0) {
-      return;
-    }
-    // setValue((preventStep) => preventStep + 1);
-    setValue(value - 1);
+    setValueCurrentStep(valueCurrentStep - 1);
   }
 
   return (
     <FatherContainer>
-      <div className="content">{contentInfoStepsArray[value]}</div>
+      <div className="content">{contentInfoStepsArray[valueCurrentStep]}</div>
 
-      {value !== contentInfoStepsArray.length - 1 && (
+      {valueCurrentStep !== contentInfoStepsArray.length - 1 && (
         <div className="barNavigation">
-          {value !== 0 && (
+          {valueCurrentStep !== 0 && (
             <>
               <button
-                style={{ visibility: value === 0 ? "hidden" : "visible" }}
+                style={{
+                  visibility: valueCurrentStep === 0 ? "hidden" : "visible",
+                }}
                 onClick={goBack}
               >
                 Go Back
               </button>
 
               <button onClick={nextStep}>
-                {value !== 3 ? "Next Step" : "Confirm"}
+                {valueCurrentStep !== 3 ? "Next Step" : "Confirm"}
               </button>
             </>
           )}
