@@ -24,6 +24,7 @@ export default function StepProvider({ children }) {
     <StepThanks />,
   ];
 
+  const [altStateMonthYear, setAltStateMonthYear] = useState(true);
   const [yourPlanSelect, setYourPlanSelect] = useState({
     planType: "Arcade",
     planValue: "$9/mo",
@@ -46,6 +47,8 @@ export default function StepProvider({ children }) {
         setPhoneForm,
         controlSendForm,
         setControlSendForm,
+        altStateMonthYear,
+        setAltStateMonthYear,
         yourPlanSelect,
         setYourPlanSelect,
         arrayValuesServices,

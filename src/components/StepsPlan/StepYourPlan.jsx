@@ -16,9 +16,8 @@ import {
 } from "./StepPlanStyles";
 
 export default function StepYourPlan() {
-  const { yourPlanSelect } = useStepContext();
-
-  const [altStateMonthYear, setAltStateMonthYear] = useState(true);
+  const { yourPlanSelect, altStateMonthYear, setAltStateMonthYear } =
+    useStepContext();
 
   return (
     <>
@@ -34,6 +33,7 @@ export default function StepYourPlan() {
           tit="Arcade"
           nameType={yourPlanSelect.planType}
           subTit={altStateMonthYear ? "$9/mo" : "$90/yr"}
+          valueForCount={altStateMonthYear ? 9 : 90}
         />
         <Cards
           altStateMonthYear={altStateMonthYear}
@@ -41,6 +41,7 @@ export default function StepYourPlan() {
           tit="Advanced"
           nameType={yourPlanSelect.planType}
           subTit={altStateMonthYear ? "$12/mo" : "$120/yr"}
+          valueForCount={altStateMonthYear ? 12 : 120}
         />
         <Cards
           altStateMonthYear={altStateMonthYear}
@@ -48,6 +49,7 @@ export default function StepYourPlan() {
           tit="Pro"
           nameType={yourPlanSelect.planType}
           subTit={altStateMonthYear ? "$15/mo" : "$150/yr"}
+          valueForCount={altStateMonthYear ? 15 : 150}
         />
       </ContainerCards>
 
@@ -70,7 +72,14 @@ export default function StepYourPlan() {
   );
 }
 
-function Cards({ urlImage, tit, subTit, altStateMonthYear, nameType }) {
+function Cards({
+  urlImage,
+  tit,
+  subTit,
+  altStateMonthYear,
+  nameType,
+  valueForCount,
+}) {
   const { yourPlanSelect, setYourPlanSelect } = useStepContext();
 
   useEffect(() => {
@@ -79,18 +88,21 @@ function Cards({ urlImage, tit, subTit, altStateMonthYear, nameType }) {
         planType: "Arcade",
         planValue: altStateMonthYear ? "$9/mo" : "$90/yr",
         planTime: altStateMonthYear ? "Monthly" : "Yearly",
+        countValue: altStateMonthYear ? 9 : 90,
       });
     } else if (yourPlanSelect.planType === "Advanced") {
       setYourPlanSelect({
         planType: "Advanced",
         planValue: altStateMonthYear ? "$12/mo" : "$120/yr",
         planTime: altStateMonthYear ? "Monthly" : "Yearly",
+        countValue: altStateMonthYear ? 12 : 120,
       });
     } else if (yourPlanSelect.planType === "Pro") {
       setYourPlanSelect({
         planType: tit,
         planValue: altStateMonthYear ? "$15/mo" : "$150/yr",
         planTime: altStateMonthYear ? "Monthly" : "Yearly",
+        countValue: altStateMonthYear ? 15 : 150,
       });
     }
   }, [altStateMonthYear]);
@@ -100,6 +112,7 @@ function Cards({ urlImage, tit, subTit, altStateMonthYear, nameType }) {
       planType: tit,
       planValue: subTit,
       planTime: altStateMonthYear ? "Monthly" : "Yearly",
+      countValue: valueForCount,
     });
   }
 

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import useStepContext from "../hook/useStepContext";
 import HeaderStepsInfo from "./HeaderStepsInfo";
@@ -47,10 +47,23 @@ const AllInfoAboutPlan = styled.div`
 `;
 
 export default function StepFinish() {
-  const { yourPlanSelect, arrayValuesServices } = useStepContext();
+  const { yourPlanSelect, arrayValuesServices, altStateMonthYear } =
+    useStepContext();
+
+  const [totalFinishing, setTotalFinishing] = useState(0);
 
   useEffect(() => {
-    // yourPlanSelect.planValue +
+    const totalServicesValue = arrayValuesServices.reduce(
+      (acc, currentValue) => {
+        return acc + parseFloat(currentValue.priceService);
+      },
+      0
+    );
+
+    console.log(totalServicesValue);
+    console.log(yourPlanSelect.countValue);
+
+    setTotalFinishing(yourPlanSelect.countValue + totalServicesValue);
   }, []);
 
   return (
@@ -75,18 +88,15 @@ export default function StepFinish() {
           {arrayValuesServices.map((item, index) => (
             <div key={index} className="customOnlineService infoFlex">
               <h4>{item.nameService}</h4>
-              <span>{item.priceService}</span>
+              <span>
+                +${item.priceService}/{item.monthYear}
+              </span>
             </div>
           ))}
-
-          {/* <div className="customStorage infoFlex">
-            <h4>Larger storage</h4>
-            <span>+$2/mo</span>
-          </div> */}
         </div>
         <div className="total infoFlex">
-          <h4>Total(per Month)</h4>
-          <span>+$12/mo</span>
+          <h4>Total({altStateMonthYear ? "per Month" : "per Year"})</h4>
+          <span>+${totalFinishing}/mo</span>
         </div>
       </AllInfoAboutPlan>
     </>

@@ -5,7 +5,8 @@ import HeaderStepsInfo from "../HeaderStepsInfo";
 import { ContainerAllServices, ContainerService } from "./StepServiceStyle";
 
 export default function StepServices() {
-  const { arrayValuesServices, setArrayValuesServices } = useStepContext();
+  const { arrayValuesServices, setArrayValuesServices, altStateMonthYear } =
+    useStepContext();
 
   useEffect(() => {
     setArrayValuesServices([]);
@@ -17,6 +18,7 @@ export default function StepServices() {
       priceService: e.target.value,
       valueInput: e.target.checked,
       verification: e.target.id,
+      monthYear: altStateMonthYear ? "mo" : "yr",
     };
 
     if (e.target.checked) {
@@ -43,7 +45,7 @@ export default function StepServices() {
             <input
               type="checkbox"
               name="Online Service"
-              value="+$1/mo"
+              value={altStateMonthYear ? "1" : "10"}
               onClick={(e) => addServiceOnlineInArray(e)}
               id="1"
             />
@@ -53,14 +55,14 @@ export default function StepServices() {
               <p>Access to multiplayer games</p>
             </div>
           </div>
-          <span>+$1/mo</span>
+          <span>{altStateMonthYear ? "+$1/mo" : "+$10/yr"}</span>
         </ContainerService>
         <ContainerService>
           <div className="serviceCheckAndInfo">
             <input
               type="checkbox"
               name="Larger Storage"
-              value="+$2/mo"
+              value={altStateMonthYear ? "2" : "20"}
               onClick={(e) => addServiceOnlineInArray(e)}
               id="2"
             />
@@ -70,14 +72,14 @@ export default function StepServices() {
               <p>Extra 1TB of cloud save</p>
             </div>
           </div>
-          <span>+$2/mo</span>
+          <span>{altStateMonthYear ? "+$2/mo" : "+$20/yr"}</span>
         </ContainerService>
         <ContainerService>
           <div className="serviceCheckAndInfo">
             <input
               type="checkbox"
               name="Customizable Profile"
-              value="+$2/mo"
+              value={altStateMonthYear ? "2" : "20"}
               onClick={(e) => addServiceOnlineInArray(e)}
               id="3"
             />
@@ -87,7 +89,7 @@ export default function StepServices() {
               <p>Custin theme on your profile</p>
             </div>
           </div>
-          <span>+$2/mo</span>
+          <span>{altStateMonthYear ? "+$2/mo" : "+$20/yr"}</span>
         </ContainerService>
       </ContainerAllServices>
     </>
