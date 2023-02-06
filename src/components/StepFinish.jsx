@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import styled from "styled-components";
 import useStepContext from "../hook/useStepContext";
 import HeaderStepsInfo from "./HeaderStepsInfo";
@@ -47,6 +48,10 @@ const AllInfoAboutPlan = styled.div`
 
 export default function StepFinish() {
   const { yourPlanSelect, arrayValuesServices } = useStepContext();
+
+  useEffect(() => {
+    // yourPlanSelect.planValue +
+  }, []);
 
   return (
     <>
