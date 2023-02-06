@@ -60,9 +60,6 @@ export default function StepFinish() {
       0
     );
 
-    console.log(totalServicesValue);
-    console.log(yourPlanSelect.countValue);
-
     setTotalFinishing(yourPlanSelect.countValue + totalServicesValue);
   }, []);
 
