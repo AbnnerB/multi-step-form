@@ -4,6 +4,11 @@ export const ContainerCards = styled.div`
   min-width: 80%;
   display: flex;
   justify-content: space-between;
+
+  @media screen and (max-width: 620px) {
+    flex-direction: column;
+    gap: 10px;
+  }
 `;
 
 export const Card = styled.button`
@@ -24,6 +29,18 @@ export const Card = styled.button`
 
   .infoCard {
     text-align: left;
+  }
+
+  @media screen and (max-width: 620px) {
+    gap: 10px;
+    padding: 1rem;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+
+    /* .infoCard {
+      text-align: center;
+    } */
   }
 `;
 
