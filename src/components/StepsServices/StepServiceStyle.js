@@ -39,4 +39,8 @@ export const ContainerService = styled.button`
   input {
     cursor: pointer;
   }
+  &:hover {
+    background-color: #c4cae422;
+    border-color: #6843ad;
+  }
 `;

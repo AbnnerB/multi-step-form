@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import useStepContext from "../../hook/useStepContext";
 import HeaderStepsInfo from "../HeaderStepsInfo";
 
@@ -32,6 +32,10 @@ export default function StepServices() {
     }
   }
 
+  const [stylesServicesOnline, setStylesServicesOnline] = useState(false);
+  const [stylesServicesLarger, setStylesServicesLarger] = useState(false);
+  const [stylesServicesCustom, setStylesServicesCustom] = useState(false);
+
   return (
     <>
       <HeaderStepsInfo
@@ -40,13 +44,19 @@ export default function StepServices() {
       />
 
       <ContainerAllServices>
-        <ContainerService>
+        <ContainerService
+          style={{
+            backgroundColor: stylesServicesOnline ? "#c4cae422" : "white",
+            borderColor: stylesServicesOnline ? "#6843ad" : "",
+          }}
+        >
           <div className="serviceCheckAndInfo">
             <input
               type="checkbox"
               name="Online Service"
               value={altStateMonthYear ? "1" : "10"}
               onClick={(e) => addServiceOnlineInArray(e)}
+              onChange={() => setStylesServicesOnline(!stylesServicesOnline)}
               id="1"
             />
 
@@ -57,13 +67,19 @@ export default function StepServices() {
           </div>
           <span>{altStateMonthYear ? "+$1/mo" : "+$10/yr"}</span>
         </ContainerService>
-        <ContainerService>
+        <ContainerService
+          style={{
+            backgroundColor: stylesServicesLarger ? "#c4cae422" : "white",
+            borderColor: stylesServicesLarger ? "#6843ad" : "",
+          }}
+        >
           <div className="serviceCheckAndInfo">
             <input
               type="checkbox"
               name="Larger Storage"
               value={altStateMonthYear ? "2" : "20"}
               onClick={(e) => addServiceOnlineInArray(e)}
+              onChange={() => setStylesServicesLarger(!stylesServicesLarger)}
               id="2"
             />
 
@@ -74,13 +90,19 @@ export default function StepServices() {
           </div>
           <span>{altStateMonthYear ? "+$2/mo" : "+$20/yr"}</span>
         </ContainerService>
-        <ContainerService>
+        <ContainerService
+          style={{
+            backgroundColor: stylesServicesCustom ? "#c4cae422" : "white",
+            borderColor: stylesServicesCustom ? "#6843ad" : "",
+          }}
+        >
           <div className="serviceCheckAndInfo">
             <input
               type="checkbox"
               name="Customizable Profile"
               value={altStateMonthYear ? "2" : "20"}
               onClick={(e) => addServiceOnlineInArray(e)}
+              onChange={() => setStylesServicesCustom(!stylesServicesCustom)}
               id="3"
             />
 

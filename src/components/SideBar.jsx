@@ -26,7 +26,6 @@ const SideBarStyles = styled.section`
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
-    cursor: pointer;
   }
 
   .sideBarInfoSteps span {
