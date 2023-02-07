@@ -1,10 +1,9 @@
-import { useEffect } from "react";
 import styled from "styled-components";
 import useStepContext from "../hook/useStepContext";
 
 const FatherContainer = styled.section`
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -40,8 +39,6 @@ const FatherContainer = styled.section`
   @media screen and (max-width: 620px) {
     position: absolute;
     height: auto;
-    /* gap: 2rem; */
-    gap: 0px;
     top: 100px;
     padding: 0px;
     min-height: 100%;

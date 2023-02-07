@@ -7,24 +7,20 @@ import FatherComponent from "./components/FatherComponent";
 
 const BackgroundContainer = styled.div`
   width: 100%;
-  min-height: 100vh;
-  /* background-color: #85bcd530; */
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 
   @media screen and (max-width: 620px) {
     display: block;
-
-    /* flex-direction: column; */
-    /* height: 100%; */
   }
 `;
 
 const PrincipalContainer = styled.main`
   background-color: white;
   padding: 15px;
-  height: 80%;
+  min-height: 80%;
   width: 65%;
   max-width: 1100px;
   max-height: 600px;
@@ -38,7 +34,6 @@ const PrincipalContainer = styled.main`
   }
   @media screen and (max-width: 840px) {
     gap: 3rem;
-    justify-content: space-between;
   }
   @media screen and (max-width: 620px) {
     flex-direction: column;
