@@ -56,4 +56,23 @@ export const FormStyles = styled.form`
     color: white;
     padding: 0.8rem 1rem;
   }
+
+  @media screen and (max-width: 620px) {
+    .buttonNexStepFake {
+      margin: 0px;
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+      background-color: white;
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 1rem;
+    }
+
+    .buttonNexStepFake button {
+      margin: 0px;
+    }
+  }
 `;

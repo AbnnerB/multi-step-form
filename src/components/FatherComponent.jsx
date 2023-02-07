@@ -38,35 +38,33 @@ const FatherContainer = styled.section`
   }
 
   @media screen and (max-width: 620px) {
-    position: relative;
-    /* position: absolute; */
-    min-height: 77vh;
-    /* min-height: 100%; */
+    position: absolute;
+    height: auto;
+    /* gap: 2rem; */
+    gap: 0px;
+    top: 100px;
     padding: 0px;
-    /* background-color: red; */
-    justify-content: flex-end;
+    min-height: 100%;
 
     .content {
-      height: 100%;
-      position: absolute;
-      top: -150px;
-      left: 10%;
-      width: 80%;
-      padding: 3rem 2rem;
+      margin: 20px auto;
       border-radius: 25px;
+      width: 85%;
+      padding: 2rem;
     }
 
     .barNavigation {
-      /* background-color: white; */
+      background-color: white;
       width: 100%;
       align-items: center;
-      padding: 0 1rem;
-      background-color: blue;
-      /* height: 100px; */
+      padding: 1rem;
     }
-    /* .barNavigation button {
-      height: 50px;
-    } */
+  }
+  @media screen and (max-width: 330px) {
+    .content {
+      width: 95%;
+      padding: 1rem 0.8rem;
+    }
   }
 `;
 

@@ -42,10 +42,7 @@ const PrincipalContainer = styled.main`
   }
   @media screen and (max-width: 620px) {
     flex-direction: column;
-    /* height: 100%; */
     width: 100%;
-    /* min-height: 100vh; */
-
     background-color: transparent;
     padding: 0px;
   }

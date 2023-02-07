@@ -47,8 +47,12 @@ const AllInfoAboutPlan = styled.div`
 `;
 
 export default function StepFinish() {
-  const { yourPlanSelect, arrayValuesServices, altStateMonthYear } =
-    useStepContext();
+  const {
+    yourPlanSelect,
+    arrayValuesServices,
+    altStateMonthYear,
+    setValueCurrentStep,
+  } = useStepContext();
 
   const [totalFinishing, setTotalFinishing] = useState(0);
 
@@ -77,7 +81,12 @@ export default function StepFinish() {
               <h3>
                 {yourPlanSelect.planType} ({yourPlanSelect.planTime})
               </h3>
-              <h4>Change</h4>
+              <h4
+                style={{ textDecoration: "underline" }}
+                onClick={() => setValueCurrentStep(1)}
+              >
+                Change
+              </h4>
             </div>
             <span>{yourPlanSelect.planValue}</span>
           </div>

@@ -71,16 +71,12 @@ const SideBarStyles = styled.section`
     border-radius: 0px;
     background-image: url(${BgsideBarMobile});
     background-position: top;
-    /* background-size: 90%; */
 
     .containerInfoSideBarSteps {
-      /* margin-top: 2rem; */
-      /* padding: 1rem; */
       padding-top: 1rem;
       height: 180px;
       flex-direction: row;
       justify-content: center;
-      /* align-items: center; */
     }
     .infoSideBarDetailsSteps {
       display: none;
